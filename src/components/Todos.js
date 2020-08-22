@@ -1,29 +1,37 @@
 import React, { useState, useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { addTodo, updateTodo, deleteTodo } from '../redux/actions/todoActions';
 import { useForm } from '../hooks/useForm';
 import TodoForm from './TodoForm';
 import '../styles.css'
 import TodoList from './TodoList';
 
-const Todos = ({
+const Todos = ( /* {
     todos,
     addTodo,
     updateTodo,
     deleteTodo
-}) => {
+}  */) => {
+
+    const { todos } = useSelector(state => state.todoReducer)
+
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
+
+  
+
+    const dispatch = useDispatch()
+
     const handleSubmit = (event) => {
         event.preventDefault()
         const text = event.target[0].value
-        console.log(text);
-        addTodo({
+
+        dispatch(addTodo({
             text,
             id: new Date().getTime(),
             checked: false
-        })
+        }))
         event.target[0].value = ''
     }
     return (
@@ -41,7 +49,7 @@ const Todos = ({
     )
 }
 
-const mapStateToProps = (state) => {
+/* const mapStateToProps = (state) => {
     return {
         todos: state.todoReducer.todos
 
@@ -56,5 +64,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Todos)
-//export default Todos
+export default connect(mapStateToProps, mapDispatchToProps)(Todos) */
+export default Todos

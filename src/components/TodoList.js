@@ -5,7 +5,7 @@ const TodoList = ({
     updateTodo,
     deleteTodo
 }) => {
-    console.log(todos);
+
     return (
       
         <ul className="list-group list-group-flush">

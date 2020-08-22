@@ -9,7 +9,7 @@ const initialState = {
     ] */
     todos: JSON.parse(localStorage.getItem("todos")) || []
 }
-const todoReducer = (state = initialState, action) => {
+export const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return {
@@ -45,4 +45,4 @@ const todoReducer = (state = initialState, action) => {
     }
 
 }
-export default todoReducer;
+//export default todoReducer;
