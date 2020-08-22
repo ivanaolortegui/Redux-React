@@ -13,13 +13,12 @@ const Todos = ( /* {
     deleteTodo
 }  */) => {
 
-    const { todos } = useSelector(state => state.todoReducer)
+    const { todos } = useSelector(state => state.todo)
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
     }, [todos])
 
-  
 
     const dispatch = useDispatch()
 
@@ -39,7 +38,11 @@ const Todos = ( /* {
             <h1> Todo {todos.length}</h1>
             <div className="row">
                 <div className="col-7">
-                    <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+                    <TodoList 
+                    todos={todos} 
+                    /* updateTodo={updateTodo} 
+                    deleteTodo={deleteTodo}  */
+                    />
                 </div>
                 <div className="col-5">
                     <TodoForm onSubmit={handleSubmit} />

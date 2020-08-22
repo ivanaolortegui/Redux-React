@@ -1,24 +1,19 @@
 import React from 'react'
+import Todo from './Todo'
+
 
 const TodoList = ({
     todos,
-    updateTodo,
-    deleteTodo
+   /*  updateTodo,
+    deleteTodo */
 }) => {
-
     return (
-      
         <ul className="list-group list-group-flush">
         {todos.map(todo => (
-            <li key={todo.id} className="list-group-item">
-                <input type="checkbox"
-                checked={todo.checked}
-                onChange={ () => updateTodo(todo)}
-                />
-                {todo.text}
-                <button  onClick={()=> deleteTodo(todo)} 
-                className="btn btn-danger">X</button>
-            </li>
+          <Todo  
+          key={todo.id} 
+          todo={todo}
+           />
         ))}
     </ul>
     )
