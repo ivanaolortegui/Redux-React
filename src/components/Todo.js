@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux';
-import {  updateTodo, deleteTodo } from '../redux/actions/todoActions';
+import { deleteDataTodo, updateDataTodo } from '../redux/actions/todoActions';
 
 
 const Todo = ({
@@ -12,10 +12,10 @@ const Todo = ({
         <li className="list-group-item">
         <input type="checkbox"
         checked={todo.checked}
-        onChange={ () => dispatch(updateTodo(todo))}
+        onChange={ () => dispatch(updateDataTodo(todo))}
         />
         {todo.text}
-        <button  onClick={()=> dispatch(deleteTodo(todo))} 
+        <button  onClick={()=> dispatch(deleteDataTodo(todo))} 
         className="btn btn-danger">X</button>
     </li>
     )

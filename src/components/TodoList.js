@@ -4,8 +4,6 @@ import Todo from './Todo'
 
 const TodoList = ({
     todos,
-   /*  updateTodo,
-    deleteTodo */
 }) => {
     return (
         <ul className="list-group list-group-flush">

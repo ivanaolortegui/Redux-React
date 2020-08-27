@@ -5,7 +5,7 @@ const TodoForm = ({
 }) => {
   return (
     <>
-      <h4> Agregar TODO <span>📋</span> </h4>
+      <h4> Agregar TODO <span role="img" aria-label="hook emoji">📋</span> </h4>
       <hr />
       <form onSubmit={onSubmit}>
         <input type="text" className="form-control" placeholder="Agregar nueva tarea" />

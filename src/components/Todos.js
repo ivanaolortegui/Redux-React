@@ -1,32 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
-import { addTodo, updateTodo, deleteTodo } from '../redux/actions/todoActions';
-import { useForm } from '../hooks/useForm';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { showTodos, addNewTodo } from '../redux/actions/todoActions';
+
 import TodoForm from './TodoForm';
 import '../styles.css'
 import TodoList from './TodoList';
 
-const Todos = ( /* {
-    todos,
-    addTodo,
-    updateTodo,
-    deleteTodo
-}  */) => {
-
+const Todos = () => {
+    const dispatch = useDispatch()
     const { todos } = useSelector(state => state.todo)
 
-    useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos))
-    }, [todos])
+    /*  useEffect(() => {
+         localStorage.setItem('todos', JSON.stringify(todos))
+     }, [todos]) */
 
+    useEffect(() => dispatch(showTodos()), [dispatch])
 
-    const dispatch = useDispatch()
 
     const handleSubmit = (event) => {
         event.preventDefault()
         const text = event.target[0].value
 
-        dispatch(addTodo({
+        dispatch(addNewTodo({
             text,
             id: new Date().getTime(),
             checked: false
@@ -38,10 +33,8 @@ const Todos = ( /* {
             <h1> Todo {todos.length}</h1>
             <div className="row">
                 <div className="col-7">
-                    <TodoList 
-                    todos={todos} 
-                    /* updateTodo={updateTodo} 
-                    deleteTodo={deleteTodo}  */
+                    <TodoList
+                        todos={todos}
                     />
                 </div>
                 <div className="col-5">
